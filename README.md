@@ -1,3 +1,26 @@
+## :information_source: This Repository is a Fork
+
+### Purpose of this Fork
+
+Inspired by the article from [Nitsan](https://www.blogger.com/profile/10496299147100350513), check [here]([/2013/02/alignment-concurrency-and-torture-x86.html?m=1](https://psy-lob-saw.blogspot.com/2013/02/alignment-concurrency-and-torture-x86.html?m=1))
+
+This fork add more tests which targets the OffHeap reserved using Unsafe, rather than those reserved using DirectByteBuffer as in Nitsan's article. 
+
+Also this fork test a couple of other test cases.
+
+The purpose of this fork is to:
+
+- Test the atomicity of concurrent offHeap memory access (Type: Long)
+  - Access Same Address
+  - Access a neighbour address
+  - Access with & without a synchronized block
+
+To see the additions of this fork, check the PR [here](https://github.com/mostafaelganainy/jcstress/pull/1/files)
+
+-----> End of fork info
+
+---------
+
 # Java Concurrency Stress (jcstress)
 
 The Java Concurrency Stress (jcstress) is the experimental harness and
