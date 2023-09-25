@@ -37,15 +37,6 @@ public class ReadWriteSynchronizedOffheapAtomicityTest {
     private final long offset;
 
     public ReadWriteSynchronizedOffheapAtomicityTest() {
-//        final int size = getSize();
-//        
-//        ByteBuffer buffy = OffHeapUtils.allocateAlignedByteBuffer(CACHE_LINE_SIZE, CACHE_LINE_SIZE);
-//        // new position is always unaligned for a type of size
-//        int newPosition = (RANDOM.nextInt(CACHE_LINE_SIZE / size - 2)) * size
-//                + 1 + ((size > 2) ? RANDOM.nextInt(size - 2) : 0);
-//        buffy.position(newPosition);
-//        buffer = buffy.slice().order(ByteOrder.nativeOrder());
-        
         page = OffHeapUtils.allocatePage(2 * CACHE_LINE_SIZE);
         offset = alignAddresses ? getAlignedOffset(page) : ThreadLocalRandom.current().nextInt( 2 * CACHE_LINE_SIZE - 8);;
     }

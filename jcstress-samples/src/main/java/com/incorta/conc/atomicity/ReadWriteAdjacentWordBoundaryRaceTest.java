@@ -44,14 +44,12 @@ public class ReadWriteAdjacentWordBoundaryRaceTest {
     }
 
     @Actor
-    public void writer1() {
-        
-//        buffer.putLong(0, -1L);
+    public void writer1(L_Result r) {
         OffHeapUtils.setLong(page, offset - 8, -1L);
     }
 
     @Actor
-    public void writer2() {
+    public void writer2(L_Result r) {
         OffHeapUtils.setLong(page, offset, -1L);
     }
     

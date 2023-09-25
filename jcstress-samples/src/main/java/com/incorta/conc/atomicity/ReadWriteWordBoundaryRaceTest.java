@@ -6,7 +6,10 @@ import org.openjdk.jcstress.annotations.JCStressTest;
 import org.openjdk.jcstress.annotations.Outcome;
 import org.openjdk.jcstress.annotations.State;
 import org.openjdk.jcstress.infra.results.L_Result;
+import org.openjdk.jcstress.samples.jmm.basic.BasicJMM_02_AccessAtomicity;
 
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.VarHandle;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Random;
@@ -30,6 +33,16 @@ import static org.openjdk.jcstress.annotations.Expect.*;
 public class ReadWriteWordBoundaryRaceTest {
     private static final Random RANDOM = new Random();
     private static final int CACHE_LINE_SIZE = 128;
+
+    static final VarHandle VH;
+
+    static {
+        try {
+            VH = MethodHandles.lookup().findVarHandle(ReadWriteWordBoundaryRaceTest.class, "v", long.class);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new IllegalStateException(e);
+        }
+    }
     
     private static final boolean alignAddresses = false;
     
